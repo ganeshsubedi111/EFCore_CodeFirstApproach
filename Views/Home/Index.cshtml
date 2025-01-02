@@ -1,0 +1,38 @@
+﻿@model IEnumerable<EF_CodeFirstApproach.Models.Student>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Id)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Gender)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Age)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Standard)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => student.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => student.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => student.Gender)</td>
+                    <td>@Html.DisplayFor(modelItem => student.Age)</td>
+                    <td>@Html.DisplayFor(modelItem => student.Standard)</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Student", new { id = student.Id })" class="btn btn-info">View</a>
+                        <a href="@Url.Action("Edit", "Student", new { id = student.Id })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("Delete", "Student", new { id = student.Id })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No students found.</p>
+}
