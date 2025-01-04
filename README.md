@@ -31,7 +31,10 @@ Define your model classes that represent the tables in the database. These class
 Create a `DbContext` class that will manage the database connection and provide access to your model classes. This class should inherit from `DbContext`, and you should define a property for each model class you want to interact with.
 
 #### Step 4: Create a Connection String in `appsettings.json`
-In the `appsettings.json` file, add a connection string that specifies how to connect to your database (e.g., SQL Server, SQLite). This string will be used by the `DbContext` class to establish a connection to the database.
+In the `appsettings.json` file, add a connection string that specifies how to connect to your database (e.g., SQL Server, SQLite). This string will be used by the `DbContext` class to establish a connection to the database. add folowing connection strings 
+"ConnectionStrings": {
+    "DatabaseConnection": "Server=servername;Database=databasename;Integrated Security=True;Encrypt=False;"
+  },
 
 #### Step 5: Register the Connection String in `Program.cs`
 In your `Program.cs` (or `Startup.cs`), register the `DbContext` with the configured connection string. This tells Entity Framework Core how to use the connection to interact with the database.
